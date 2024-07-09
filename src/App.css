@@ -2,18 +2,18 @@
   text-align: center;
 }
 
-.App-logo {
-  size: auto;
-  width: '150px';  
-  height: 'auto';
-  /* height: 80vmin; */
-  pointer-events: none;
+.logo {
+  max-width: 50px;
+  max-height: 50px;
+  width: 50px;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+.search-bar {
+  width: 300px;
 }
 
 .App-header {

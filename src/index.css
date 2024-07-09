@@ -1,19 +1,38 @@
 .App {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   color: #333;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
 }
-
+.transparent-button {
+  opacity: 0.7; /* Adjust opacity as needed (0 for fully transparent, 1 for fully opaque) */
+  background-color: transparent; /* Remove default button background */
+  border-color: transparent; /* Remove default button border (optional) */
+  color: inherit; /* Inherit text color from navbar */
+}
+.transparent-search-bar {
+  opacity: 0.7; /* Adjust opacity as needed */
+  background-color: transparent;
+  border-color: transparent; /* Remove default border (optional) */
+  color: inherit; /* Inherit text color from navbar */
+}
 .App-header {
   background-color: #fff;
   padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
 }
-
+.auth {
+  margin-left: 100px;
+}
+.custom-navbar {
+  background-color: #90ee90;
+  color: #fff; /* Light text color for good contrast */
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -184,7 +203,7 @@ p {
   display: block;
   margin: 2rem auto;
   padding: 0.5rem 1rem;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -196,7 +215,7 @@ p {
   display: block;
   margin: 2rem auto;
   padding: 0.5rem 2rem;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -267,7 +286,7 @@ footer {
 }
 
 .app-download-footer {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   padding: 1rem 0;
   text-align: center;
