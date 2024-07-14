@@ -20,6 +20,7 @@ function App() {
       <header>
         <Navbar />
       </header>
+      <div className='middleContent'>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -33,6 +34,7 @@ function App() {
 
         <Route path="/Register" element={<Register />} />
       </Routes>
+      </div>
       <div className='footerclass'>
       <Footer/>
       </div>
