@@ -49,7 +49,7 @@ const Login = () => {
 
         <button type="submit">Login</button>
         
-          <Link to="/Register">
+          <Link to="/registeru">
             new? Register here
           </Link>
           

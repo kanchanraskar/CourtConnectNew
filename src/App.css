@@ -39,3 +39,15 @@
     transform: rotate(360deg);
   }
 }
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.footerclass{
+  margin-top: auto;
+  
+}
+header{
+  margin-bottom: 5%;
+}

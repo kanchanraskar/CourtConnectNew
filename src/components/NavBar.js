@@ -7,8 +7,10 @@ import Logo from './Images/Logo.png';
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <ul className="navbar-nav">
-      <li className="nav-item">
+    <div className='row'>
+      <ul className="navbar-nav ">
+        
+         <li className="nav-item">
           <li className="nav-item">
           <div className="container">
           <div className="logo" >
@@ -54,16 +56,11 @@ const Navbar = () => {
             Login
           </Link>
         </li>
-
-        <li className="nav-item">
-          <Link to="/registeru" className="nav-link">
-            register yourself
-          </Link>
-        </li>
         </li>
         </li>
   
       </ul>
+      </div>
     </nav>
   );
 };

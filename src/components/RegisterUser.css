@@ -3,7 +3,9 @@
     border-radius: 2%;
     background-color: rgba(117, 219, 211, 0.8); /* Transparent white background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow with transparency */
-    padding: 20px;
-    width:25%;
+    padding: 5%;
+    width:30%;
+    margin-bottom: 5%;
+    box-shadow: 10px 10px 5px lightblue;
     
 }

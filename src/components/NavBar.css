@@ -23,7 +23,7 @@
   }
   
   .logo img {
-    height: 100px;
+    height: 80px;
   }
   .nav li {
     margin-right: 1rem;
@@ -79,3 +79,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
   }  
+
+  .search-bar{
+    border-radius: 5%;
+  }

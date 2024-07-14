@@ -16,7 +16,10 @@ import RegisterUser from './components/RegisterUser';
 function App() {
   return (
     <Router>
-      <Navbar />
+    <body>
+      <header>
+        <Navbar />
+      </header>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -30,7 +33,10 @@ function App() {
 
         <Route path="/Register" element={<Register />} />
       </Routes>
+      <div className='footerclass'>
       <Footer/>
+      </div>
+      </body>
     </Router>
   );
 }
