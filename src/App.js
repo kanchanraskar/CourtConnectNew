@@ -11,7 +11,7 @@ import FAQ from './components/FAQ';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Register from './components/Register';
-
+import RegisterUser from './components/RegisterUser';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/login" element={<Login />} />
         
-     
+        <Route path="/registeru" element={<RegisterUser/>}/>
 
         <Route path="/Register" element={<Register />} />
       </Routes>
