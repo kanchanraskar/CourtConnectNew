@@ -11,12 +11,16 @@ import FAQ from './components/FAQ';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Register from './components/Register';
-
+import RegisterUser from './components/RegisterUser';
 
 function App() {
   return (
     <Router>
-      <Navbar />
+    <body>
+      <header>
+        <Navbar />
+      </header>
+      <div className='middleContent'>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -26,11 +30,15 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/login" element={<Login />} />
         
-     
+        <Route path="/registeru" element={<RegisterUser/>}/>
 
         <Route path="/Register" element={<Register />} />
       </Routes>
+      </div>
+      <div className='footerclass'>
       <Footer/>
+      </div>
+      </body>
     </Router>
   );
 }
