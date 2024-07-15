@@ -4,8 +4,8 @@
 
 .App-logo {
   size: auto;
-  width: '150px';  
-  height: 'auto';
+  width: "150px";
+  height: "auto";
   /* height: 80vmin; */
   pointer-events: none;
 }
@@ -39,17 +39,16 @@
     transform: rotate(360deg);
   }
 }
-body{
+body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.footerclass{
+.footerclass {
   margin-top: auto;
-  
 }
 
-.middleContent{
-  margin-top: 3%;
+.middleContent {
+  margin-top: 1%;
   margin-bottom: 3%;
 }

@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
-import './BookTurf.css'; // Import the CSS file for styles
+import React, { useState } from "react";
+import "./BookTurf.css"; // Import the CSS file for styles
 
 const BookTurf = () => {
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedGame, setSelectedGame] = useState("");
+  const gameOptions = [
+    "Football",
+    "Soccer",
+    "Basketball",
+    "Tennis",
+    "Cricket",
+    "Volleyball",
+    "Badminton",
+    "Rugby",
+    "Baseball",
+    "Hockey",
+  ];
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -15,23 +26,22 @@ const BookTurf = () => {
     setSelectedTime(e.target.value);
   };
 
-  const handleFullNameChange = (e) => {
-    setFullName(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleGameChange = (e) => {
+    setSelectedGame(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform booking logic here (e.g., API call, state update)
-    console.log('Booking submitted:', { selectedDate, selectedTime, fullName, email });
+    console.log("Booking submitted:", {
+      selectedDate,
+      selectedTime,
+      selectedGame,
+    });
     // Reset form fields
-    setSelectedDate('');
-    setSelectedTime('');
-    setFullName('');
-    setEmail('');
+    setSelectedDate("");
+    setSelectedTime("");
+    setSelectedGame("");
   };
 
   return (
@@ -39,18 +49,41 @@ const BookTurf = () => {
       <h2>Book Turf</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date:</label>
-        <input type="date" id="date" value={selectedDate} onChange={handleDateChange} required />
+        <input
+          type="date"
+          id="date"
+          value={selectedDate}
+          onChange={handleDateChange}
+          required
+        />
 
         <label htmlFor="time">Time:</label>
-        <input type="time" id="time" value={selectedTime} onChange={handleTimeChange} required />
+        <input
+          type="time"
+          id="time"
+          value={selectedTime}
+          onChange={handleTimeChange}
+          required
+        />
 
-        <label htmlFor="fullName">Full Name:</label>
-        <input type="text" id="fullName" value={fullName} onChange={handleFullNameChange} required />
+        <label htmlFor="game">Select Game:</label>
+        <select
+          id="game"
+          value={selectedGame}
+          onChange={handleGameChange}
+          required
+        >
+          <option value="">Select a game</option>
+          {gameOptions.map((game, index) => (
+            <option key={index} value={game}>
+              {game}
+            </option>
+          ))}
+        </select>
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} required />
+        <br></br>
 
-        <button type="submit">Book Now</button>
+        <button type="submit">Available Turfs</button>
       </form>
     </div>
   );
