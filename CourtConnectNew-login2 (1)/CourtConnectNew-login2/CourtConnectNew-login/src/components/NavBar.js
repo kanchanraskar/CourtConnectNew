@@ -48,11 +48,11 @@ const Navbar = () => {
                 FAQ
               </Link>
             </li>
-            {/* <li className="nav-item" id="login-btn">
+            { <li className="nav-item" id="login-btn">
               <Link to="/login" className="nav-link">
                 Login
               </Link>
-            </li> */}
+            </li> }
           </li>
         </li>
       </ul>

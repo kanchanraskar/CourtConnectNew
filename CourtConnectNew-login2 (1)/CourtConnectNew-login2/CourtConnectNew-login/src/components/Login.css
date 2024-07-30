@@ -26,6 +26,7 @@
   
   .login input[type="email"],
   .login input[type="password"],
+  .login input[type="text"],
   .login button {
     padding: 10px;
     margin-bottom: 15px;
@@ -43,5 +44,11 @@
   
   .login button:hover {
     background-color: #0056b3;
+  }
+
+  .errorbox{
+    border-radius: 2%;
+    border: 1px thin #007bff ;
+    box-shadow: '0 4px 8px 0 rgba(0, 0, 255, 0.5)'
   }
   
