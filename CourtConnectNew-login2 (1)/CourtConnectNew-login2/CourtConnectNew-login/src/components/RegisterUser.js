@@ -1,19 +1,157 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import './RegisterUser.css';
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+  // to make buton disabled till confirm password both contains same value 
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [UserName, setUserName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [UserFullName, setUserFullName] = useState("");
+  const [UserDateOfBirth, setUserDateOfBirth] = useState("");
+  const [UserMobileNo, setUserMobileNo] = useState("");
+  const [UserProfilePic, setUserProfilePic] = useState("");
+  const [Password, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+  
+  
+  
+  //validation useState
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [fullNameError, setFullNameError] = useState('');
+  const [mobileNumberError, setMobileNumberError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [conformPasswordError, setConformPasswordError] = useState('');
+
+
+
+
+
+
+
+
+
+
+  //helping functions 
+  const validateUsername = (username) => {
+    // Regex for validating the username
+    const usernameRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@_])[A-Za-z\d@_]{8,15}$/;
+    return usernameRegex.test(username);
+  };
+
+  const validateEmail = (email) => {
+    // This regex covers most of the valid email address formats
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return emailRegex.test(email);
+  };
+
+  const validateFullName = (name) => {
+    // Regex to match alphabetic characters and spaces
+    const nameRegex = /^[a-zA-Z\s]{3,30}$/;
+    return nameRegex.test(name);
+  };
+
+  const validateMobileNumber = (number) => {
+    // Regex to match exactly 10 digits
+    const numberRegex = /^\d{10}$/;
+    return numberRegex.test(number);
+  };
+
+  // Regex to validate the password
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[_@])[A-Za-z\d@_]{8,15}$/;
+    return passwordRegex.test(password);
+  };
+
+
+//fields validation 
+  const handleUnameChange = (e) => {
+    const value = e.target.value;
+    setUserName(value);
+
+    if (!validateUsername(value)) {
+      setUsernameError('Username must contain at least one uppercase letter, one lowercase letter, one number, and only @ or _ as special characters. Length must be 8-15 characters.');
+    } else {
+      setUsernameError('');
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (!validateEmail(value)) {
+      setEmailError('Invalid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleFullNameChange = (e) => {
+    const value = e.target.value;
+    setUserFullName(value);
+
+    if (!validateFullName(value)) {
+      setFullNameError('Full name must be 3-30 characters long and contain only alphabetic characters and spaces.');
+    } else {
+      setFullNameError('');
+    }
+  };
+
+  const handleMobileNoChange = (e) => {
+    const value = e.target.value;
+    setUserMobileNo(value);
+
+    if (!validateMobileNumber(value)) {
+      setMobileNumberError('Mobile number must be exactly 10 digits long and contain only numbers.');
+    } else {
+      setMobileNumberError('');
+    }
+  };
+
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    if (!validatePassword(value)) {
+      setPasswordError('Password must be 8-15 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and only _ or @ as special characters.');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const handleRePasswordChange = (e) => {
+    const value = e.target.value;
+    setConfirmPassword(value);
+
+    if (!validatePassword(value)) {
+      setConformPasswordError('Password must be 8-15 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and only _ or @ as special characters.');
+    } else {
+      setConformPasswordError('');
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({ ...formData, [name]: value });
   };
+
+
+  // Effect to check if the button should be enabled
+  useEffect(() => {
+    // Check if both fields are valid and match
+    if (validatePassword(Password) && Password === ConfirmPassword && !passwordError && !conformPasswordError) {
+      setIsButtonEnabled(true);
+    } else {
+      setIsButtonEnabled(false);
+    }
+  }, [Password, ConfirmPassword, passwordError, conformPasswordError]);
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,23 +169,29 @@ const RegisterForm = () => {
             type="text"
             placeholder="Enter username"
             name="username"
-            value={formData.username}
-            onChange={handleChange}
+            value={UserName}
+            onChange={handleUnameChange}
             required
           />
         </Form.Group>
-
+        <div className='errormsg'>
+        {usernameError && <span style={{ color: 'red' }}>{usernameError}</span>}
+        </div>
         <Form.Group controlId="formEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={Email}
+            onChange={handleEmailChange}
             required
           />
         </Form.Group>
+
+        <div className='errormsg'>
+        {emailError && <span style={{ color: 'red' }}>{emailError}</span>}
+        </div>
 
         <Form.Group controlId="formUserFullName">
           <Form.Label>Full Name</Form.Label>
@@ -55,19 +199,24 @@ const RegisterForm = () => {
             type="text"
             placeholder="Enter Your Name"
             name="fullname"
-            value={formData.formUserFullName}
-            onChange={handleChange}
+            value={UserFullName}
+            onChange={handleFullNameChange}
             required
           />
         </Form.Group>
+
+        <div className='errormsg'>
+        {fullNameError && <span style={{ color: 'red' }}>{fullNameError}</span>}
+        </div>
+
 
         <Form.Group controlId="formUserDateOfBirth">
           <Form.Label>Date of Birth</Form.Label>
           <Form.Control
             type="date"
             name="dateOfBirth"
-            value={formData.formUserDateOfBirth}
-            onChange={handleChange}
+            value={UserDateOfBirth}
+            // onChange={handleChange}
             required
           />
         </Form.Group>
@@ -77,19 +226,22 @@ const RegisterForm = () => {
           <Form.Control
             type="tel"
             name="mobileNo"
-            value={formData.formUserMobileNo}
-            onChange={handleChange}
+            value={UserMobileNo}
+            onChange={handleMobileNoChange}
             required
           />
         </Form.Group>
+        <div className='errormsg'>
+        {mobileNumberError && <span style={{ color: 'red' }}>{mobileNumberError}</span>}
+        </div>
 
         <Form.Group controlId="formUserProfilePic">
           <Form.Label>Profile Picture</Form.Label>
           <Form.Control
             type="file"
             name="profilePic"
-            value={formData.formUserProfilePic}
-            onChange={handleChange}
+            value={UserProfilePic}
+            // onChange={handleChange}
             required
           />
         </Form.Group>
@@ -129,13 +281,15 @@ const RegisterForm = () => {
             type="password"
             placeholder="Password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
-            minLength={6}
+            value={Password}
+            onChange={handlePasswordChange}
+            minLength={8}
             required
           />
         </Form.Group>
-        
+        <div className='errormsg'>
+        {passwordError && <span style={{ color: 'red' }}>{passwordError}</span>}
+        </div>
       
 
         <Form.Group controlId="formConfirmPassword">
@@ -144,14 +298,20 @@ const RegisterForm = () => {
             type="password"
             placeholder="Confirm Password"
             name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            minLength={6}
+            value={ConfirmPassword}
+            onChange={handleRePasswordChange}
+            minLength={8}
             required
           />
+
+<div className='errormsg'>
+        {conformPasswordError && <span style={{ color: 'red' }}>{conformPasswordError}</span>}
+        </div>
+      
+
         </Form.Group>
         <div class="d-grid mt-4">
-        <Button className="btn btn-primary" variant="primary" type="submit">
+        <Button className="btn btn-primary" disabled={!isButtonEnabled} variant="primary" type="submit">
           Register
         </Button>
         </div>

@@ -56,6 +56,7 @@ const Login = () => {
     }
   };
 
+  
   //validation related to password
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
